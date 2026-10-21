@@ -13,7 +13,9 @@
       "keywords": [],
       "images": [
         "images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592579703-3e31740f.png",
-        "images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592567429-2da45f8d.png"
+        "images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592567429-2da45f8d.png",
+        "images/products/3ac98401-e616-4084-8421-f54c983f8535/1792593036181-ad11b0bd.png",
+        "images/products/3ac98401-e616-4084-8421-f54c983f8535/1792593051331-285c04f2.png"
       ],
       "buyLabel": "대여하기",
       "buyLink": "",
@@ -21,7 +23,7 @@
       "sections": [
         {
           "type": "rich_text",
-          "body": "<p><img src=\"/images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592673380-6f134c22.png\" alt=\"메인.png\"><img src=\"/images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592543699-a8989473.png\" alt=\"스카이3.png\"><br></p>"
+          "body": "<p><img src=\"/images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592673380-6f134c22.png\" alt=\"메인.png\"><br></p><p><br></p><p><img src=\"/images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592543699-a8989473.png\" alt=\"스카이3.png\"><img src=\"/images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592876608-350adbb4.png\" alt=\"스카이1.png\"><img src=\"/images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592971477-255da499.png\" alt=\"스카이4.png\"><img src=\"/images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592987765-955d3408.png\" alt=\"스카이5.png\"><br></p>"
         }
       ]
     },
