@@ -61,26 +61,27 @@
       "id": "look-03",
       "published": true,
       "featured": true,
-      "label": "WOMEN · JACKET",
-      "name": "린넨 크롭 반팔 자켓",
-      "summary": "린넨과 레이온 혼방의 내추럴한 질감이 돋보이는 가벼운 크롭 반팔 자켓",
-      "category": "Jacket",
+      "label": "Little Moments Collection",
+      "name": "레몬 미뉴에트 (Lemon Minuet)",
+      "summary": "햇살을 머금은 레몬빛 드레스, 사랑스러운 하루를 춤추듯 물들이는 로맨틱한 순간",
+      "category": "DRESS",
       "price": "",
       "keywords": [
-        "연베이지 · 블랙",
-        "린넨 혼방",
-        "크롭 기장"
+        "#버터옐로우 #레이스드레스 #퍼프소매 #리본디테일 #샤스커트 #빈티지로맨틱"
       ],
       "images": [
-        "images/products/look-03/1789635337079-488bca72.jpg"
+        "images/products/look-03/1792591164607-3ee5ba12.png",
+        "images/products/look-03/1792591175202-0bd52005.png",
+        "images/products/look-03/1792591184887-0d306a56.png",
+        "images/products/look-03/1792591196012-73ad5cc4.png"
       ],
-      "buyLabel": "구매하기",
+      "buyLabel": "대여하기",
       "buyLink": "",
       "buyNotice": "",
       "sections": [
         {
           "type": "rich_text",
-          "body": "<p><img src=\"images/products/look-03/1787721889907-d94e9719.jpg\" alt=\"Peilit 브랜드와 배송 안내\"><br></p><p><img src=\"images/products/look-03/1787721892506-4210ede3.jpg\" alt=\"린넨 크롭 반팔 자켓 상품 설명과 디테일\"><br></p><p><img src=\"images/products/look-03/1787721896090-1f05ca9b.jpg\" alt=\"연베이지 린넨 크롭 반팔 자켓 착용 이미지\"><br></p><p><img src=\"images/products/look-03/1787721899623-cb77fedc.jpg\" alt=\"블랙 린넨 크롭 반팔 자켓 착용 이미지\"><br></p><p><img src=\"images/products/look-03/1787721902234-b79d7bbf.jpg\" alt=\"린넨 크롭 반팔 자켓 상품과 사이즈 정보\"><br></p>"
+          "body": "<p><img src=\"/images/products/look-03/1792591223429-998bb00c.png\" alt=\"메잌.png\"><img src=\"/images/products/look-03/1792591241975-4e0e77d4.png\" alt=\"노랑1.png\"><img src=\"/images/products/look-03/1792591260829-9c00e1d4.png\" alt=\"노랑2.png\"><img src=\"/images/products/look-03/1792591352801-e740ac6a.png\" alt=\"노랑3.png\"><img src=\"/images/products/look-03/1792591544264-0fb9e576.png\" alt=\"노랑4.png\"><img src=\"/images/products/look-03/1792591571883-f9687605.png\" alt=\"노랑5.png\"><br></p>"
         }
       ]
     }
