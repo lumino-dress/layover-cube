@@ -35,25 +35,25 @@
       "featured": true,
       "label": "Little Moments Collection",
       "name": "라일락 왈츠 (Lilac Waltz)",
-      "summary": "부드러운 니트 텍스처와 단정한 트임넥 디자인을 갖춘 남성 데일리 니트",
-      "category": "Dress",
+      "summary": "은은한 라일락빛 리본과 섬세한 레이스가 어우러져, 동화 속 한 장면처럼 우아하게 춤추는 순간을 선물하는 드레스",
+      "category": "DRESS",
       "price": "",
       "keywords": [
-        "아이보리 · 연그레이 · 커피 · 진그레이",
-        "트임넥",
-        "M–4XL"
+        "#라일락감성 #로맨틱무드 #러블리 #프린세스룩 #몽환적인분위기 #페어리테일"
       ],
       "images": [
-        "images/products/look-02/1789635309072-d53d51fd.jpg",
-        "images/products/look-02/1789635314790-dad8b74b.png"
+        "images/products/look-02/1792590563904-fbf9dafc.png",
+        "images/products/look-02/1792590579983-caca0b69.png",
+        "images/products/look-02/1792590603802-dad21ba9.png",
+        "images/products/look-02/1792590677267-3dd5b37f.png"
       ],
-      "buyLabel": "구매하기",
+      "buyLabel": "대여하기",
       "buyLink": "",
       "buyNotice": "",
       "sections": [
         {
           "type": "rich_text",
-          "body": "<p><img src=\"images/products/look-02/1787721878184-c17aee33.png\" alt=\"J nd O 브랜드 소개\"><br></p><p><img src=\"images/products/look-02/1787721879918-f9597545.jpg\" alt=\"남성 트임넥 니트 원단 디테일\"><br></p><p><img src=\"images/products/look-02/1787721881841-68833463.jpg\" alt=\"남성 트임넥 니트 컬러 구성\"><br></p><p><img src=\"images/products/look-02/1787721883940-f8521541.png\" alt=\"남성 트임넥 니트 사이즈 표\"><br></p><p><img src=\"images/products/look-02/1787721885287-19652e08.png\" alt=\"남성 트임넥 니트 측정 안내\"><br></p>"
+          "body": "<p><img src=\"/images/products/look-02/1792590748269-8bd2069f.png\" alt=\"메인.png\"><img src=\"/images/products/look-02/1792590793364-75c25d15.png\" alt=\"퍼플1.png\"><img src=\"/images/products/look-02/1792590856796-cb1fe0d8.png\" alt=\"퍼플4.png\"><img src=\"/images/products/look-02/1792590902710-3b01d425.png\" alt=\"퍼플8.png\"><img src=\"/images/products/look-02/1792590951025-44b30517.png\" alt=\"퍼플9.png\"><br></p>"
         }
       ]
     },
