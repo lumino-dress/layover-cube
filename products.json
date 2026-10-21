@@ -3,22 +3,25 @@
   "products": [
     {
       "id": "3ac98401-e616-4084-8421-f54c983f8535",
-      "published": false,
-      "featured": false,
+      "published": true,
+      "featured": true,
       "label": "Little Moments Collection",
       "name": "스카이 멜로디 (Sky Melody)",
       "summary": "하늘빛 선율을 닮은 은은한 반짝임, 춤추듯 흩날리는 실루엣으로 완성하는 로맨틱한 순간",
       "category": "DRESS",
       "price": "",
       "keywords": [],
-      "images": [],
-      "buyLabel": "구매하기",
+      "images": [
+        "images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592579703-3e31740f.png",
+        "images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592567429-2da45f8d.png"
+      ],
+      "buyLabel": "대여하기",
       "buyLink": "",
       "buyNotice": "",
       "sections": [
         {
           "type": "rich_text",
-          "body": "<p><br></p>"
+          "body": "<p><img src=\"/images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592673380-6f134c22.png\" alt=\"메인.png\"><img src=\"/images/products/3ac98401-e616-4084-8421-f54c983f8535/1792592543699-a8989473.png\" alt=\"스카이3.png\"><br></p>"
         }
       ]
     },
