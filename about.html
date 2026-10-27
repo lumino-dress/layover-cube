@@ -7,6 +7,8 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="lumino.css">
   <link rel="stylesheet" href="lumino-world.css">
+  <link rel="stylesheet" href="rich-content.css?v=20260826-rich-editor-1">
+  <link rel="stylesheet" href="story-portfolio.css">
 </head>
 <body class="lumino-site legacy-page">
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -38,10 +40,17 @@
       <div class="closet-gallery"><img src="images/layover-pink-front.jpg" alt="핑크 드레스" /><img src="images/layover-lavender.jpg" alt="라벤더 드레스" /><img src="images/layover-yellow.png" alt="옐로 드레스" /></div>
     </section>
 
+    <section class="section story-portfolio" aria-labelledby="story-portfolio-title">
+      <header class="section-heading"><div><p class="eyebrow">FROM LUMINO</p><h2 id="story-portfolio-title">루미노의 이야기와 장면들</h2></div></header>
+      <article id="story-portfolio-content" class="portfolio-content" aria-live="polite" aria-busy="true"><p class="portfolio-status">포트폴리오를 불러오는 중입니다.</p></article>
+    </section>
+
 <section class="chapter chapter-next"><a class="quiet-link" href="journey.html">다음 여행지 · YOUR JOURNEY →</a></section>
   </main>
 
   <footer class="lumino-footer" data-shared-footer></footer>
+  <script src="catalog.js?v=20260826-rich-editor-1"></script>
+  <script type="module" src="story-portfolio.js"></script>
   <script src="script.js"></script>
   <script type="module" src="lumino/app.js"></script>
 </body>
