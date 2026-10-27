@@ -1,5 +1,4 @@
 import { invitation } from '../data/invitation.js';
-import { icon } from './icons.js';
 import { invitationMotion } from './invitation-motion.js';
 
 export function createInvitation(dialog, { openDialog, onFinish, reducedMotion, lowPower }) {
@@ -17,32 +16,17 @@ export function createInvitation(dialog, { openDialog, onFinish, reducedMotion, 
     run++;
     cancelAnimations();
     opening = false;
-    dialog.classList.add('fantasy-invitation');
+    dialog.classList.remove('fantasy-invitation');
+    dialog.classList.add('photo-invitation');
     dialog.classList.remove('intro-opening', 'intro-still');
-    const sparks = Array.from({ length: 6 }, (_, i) => `<i style="--i:${i}">✦</i>`).join('');
     dialog.innerHTML = `
-      <div class="invitation-ambient" aria-hidden="true"></div>
-      <div class="invitation-theatre">
-        <p class="invitation-eyebrow">A LITTLE INVITATION, JUST FOR YOU</p>
-        <div class="invitation-stage">
-          <svg class="invitation-flight" viewBox="0 0 1000 1000" aria-hidden="true"><path d="M110 560C-10 260 370 175 638 220S1030 490 855 650"/><g transform="translate(634 212) rotate(18)"><path class="flight-plane" d="M-18 0L18 -10L6 3L5 17L-1 6L-13 10L-8 2Z"/></g><path class="flight-star" d="M185 230V254M173 242H197M811 340V360M801 350H821"/></svg>
-          <img class="invitation-scene" src="${invitation.scene}" alt="파스텔 블루 안감과 샴페인 골드 장식의 파우더 핑크 여행 초대장" fetchpriority="high" width="1000" height="1000">
-          <div class="invitation-flap" aria-hidden="true">
-            <div class="flap-face flap-front"><img src="${invitation.flap}" alt="" width="680" height="230"><div class="invitation-cover-logo">${icon('crown')}<span>LUMINO</span></div></div>
-            <div class="flap-face flap-back"><img src="${invitation.lining}" alt="" width="680" height="230"></div>
-          </div>
-          <div class="invitation-letter" aria-hidden="true">
-            <img class="invitation-paper" src="${invitation.paper}" alt="" width="520" height="540">
-            <div class="invitation-letter-copy">${icon('castle')}<p>YOU ARE INVITED TO</p><h2>LUMINO</h2><span class="invitation-rule" aria-hidden="true">✦</span><p class="script">A Sparkling Little Journey</p><p class="invitation-subtitle">A Cozy and Lovely World.</p></div>
-          </div>
-          <img class="invitation-pocket" src="${invitation.pocket}" alt="" aria-hidden="true" width="1000" height="1000">
-          <div class="invitation-address"><p>YOU ARE INVITED TO</p><h2>LUMINO</h2></div>
-          <div class="invitation-ribbon" aria-hidden="true"><img src="${invitation.ribbon}" alt="" width="140" height="130"></div>
-          <button type="button" class="invitation-ribbon-hit" data-action="open-intro" aria-label="여행 초대장 열기"><span class="ribbon-glint" aria-hidden="true">✦</span></button>
-          <button type="button" class="l-btn invitation-open-button" data-action="open-intro" autofocus>OPEN YOUR INVITATION <span aria-hidden="true">›</span></button>
-          <div class="invitation-sparks" aria-hidden="true">${sparks}</div>
+      <div class="invitation-photo-ambient" aria-hidden="true"><img src="${invitation.closed}" alt=""></div>
+      <div class="invitation-photo-theatre">
+        <div class="invitation-photo-stage">
+          <img class="invitation-photo-closed" src="${invitation.closed}" alt="성 배경과 여행 소품 앞에 놓인 핑크 새틴 리본과 별 모양 왁스 실링의 닫힌 초대장" fetchpriority="high" width="1536" height="1024">
+          <img class="invitation-photo-open" src="${invitation.open}" alt="열린 핑크 봉투 속 아이보리 카드: LUMINO. A Sparkling Little Journey. A Cozy and Lovely World." aria-hidden="true" width="1536" height="1024">
         </div>
-        <p class="invitation-caption">초대장을 열어, 당신만의 작은 여행을 시작해보세요.</p>
+        <button type="button" class="l-btn invitation-open-button" data-action="open-intro" autofocus>OPEN YOUR INVITATION <span aria-hidden="true">›</span></button>
       </div>
       <p class="sr-only" role="status" id="invitation-status"></p>
       <button type="button" class="skip-intro" data-action="skip-intro">SKIP INTRO <span aria-hidden="true">→</span></button>`;
@@ -57,10 +41,17 @@ export function createInvitation(dialog, { openDialog, onFinish, reducedMotion, 
     const currentRun = run;
     dialog.querySelectorAll('[data-action="open-intro"]').forEach(button => { button.disabled = true; });
     dialog.querySelector('#invitation-status').textContent = '초대장이 열리고 있습니다.';
-    await ready;
+    const loaded = await ready;
     if (currentRun !== run || !dialog.open) return;
+    if (loaded.some(result => result.status === 'rejected')) {
+      opening = false;
+      dialog.querySelector('#invitation-status').textContent = '초대장 이미지를 불러오지 못했습니다. SKIP INTRO로 여행을 시작할 수 있습니다.';
+      dialog.querySelector('[data-action="open-intro"]').disabled = false;
+      return;
+    }
     dialog.classList.add('intro-opening');
-    dialog.querySelector('.invitation-letter').setAttribute('aria-hidden', 'false');
+    dialog.querySelector('.invitation-photo-closed').setAttribute('aria-hidden', 'true');
+    dialog.querySelector('.invitation-photo-open').setAttribute('aria-hidden', 'false');
 
     // 부품마다 같은 시작 시각을 적용합니다. 별도 종료 타이머가 화면을 끊지 않습니다.
     const still = reducedMotion.matches || lowPower;

@@ -1,10 +1,6 @@
-// 새 초대장 전용 벡터 자산입니다. 기존 여권·완료 화면의 이미지는 유지합니다.
+// 첨부한 JPG 원본은 재압축하지 않고 새 경로에 보존합니다.
 export const invitation = {
-  scene: 'images/invitation-fantasy/frame.svg',
-  pocket: 'images/invitation-fantasy/pocket.svg',
-  flap: 'images/invitation-fantasy/flap.svg',
-  lining: 'images/invitation-fantasy/lining.svg',
-  ribbon: 'images/invitation-fantasy/seal.svg',
-  paper: 'images/invitation-fantasy/card.svg',
+  closed: 'images/invitation-photographic/invitation-closed.jpg',
+  open: 'images/invitation-photographic/invitation-open.jpg',
   duration: 5200
 };

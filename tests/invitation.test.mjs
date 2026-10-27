@@ -11,9 +11,9 @@ test('신규 전용 자산과 5.2초 타임라인',async()=>{
  assert.equal(invitation.duration,5200);
  for(const [key,path] of Object.entries(invitation)) {
   if(key==='duration')continue;
-  assert.ok(path.startsWith('images/invitation-fantasy/'));
-  const source=await readFile(new URL('../'+path,import.meta.url),'utf8');
-  assert.match(source,/<svg/);
+  assert.ok(path.startsWith('images/invitation-photographic/'));
+  const source=await readFile(new URL('../'+path,import.meta.url));
+  assert.equal(source[0],255); assert.equal(source[1],216);
  }
  for(const motion of invitationMotion) {
   assert.equal(motion.frames[0].offset,0);
@@ -37,7 +37,10 @@ function setup(still=false) {
 }
 domTest('열기 중복 방지·동일 타임라인·완료 1회',async()=>{
  const c=setup();try{
- c.invitationUI.show();assert.match(c.dialog.textContent,/A Sparkling Little Journey/);
+ c.invitationUI.show();
+ assert.equal(c.dialog.querySelectorAll('.invitation-photo-stage img').length,2);
+ assert.equal(c.dialog.querySelectorAll('h2,.invitation-letter-copy,svg').length,0);
+ assert.match(c.dialog.querySelector('.invitation-photo-open').alt,/A Sparkling Little Journey/);
  const opening=c.invitationUI.open();await Promise.resolve();await Promise.resolve();
  await c.invitationUI.open();assert.ok(c.runs.length>0);
  assert.ok(c.runs.every(a=>a.options.duration===5200 && a.startTime===100));
@@ -54,5 +57,16 @@ domTest('모션 감소와 SKIP·다시 보기 취소 안전성',async()=>{
  c.invitationUI.show();const second=c.invitationUI.open();await Promise.resolve();await Promise.resolve();
  c.invitationUI.show();await second;assert.equal(c.count,1);assert.equal(c.dialog.open,true);
  c.invitationUI.finish();assert.equal(c.count,2);
+ }finally{c.cleanup();}
+});
+
+domTest('이미지 디코딩 실패 시 임의의 대체 디자인 없이 SKIP 가능',async()=>{
+ const c=setup();try{
+ c.dialog.ownerDocument.defaultView.HTMLImageElement.prototype.decode=()=>Promise.reject(new Error('image unavailable'));
+ c.invitationUI.show();await c.invitationUI.open();
+ assert.equal(c.runs.length,0);
+ assert.equal(c.count,0);
+ assert.match(c.dialog.querySelector('#invitation-status').textContent,/불러오지 못했습니다/);
+ c.invitationUI.finish();assert.equal(c.count,1);
  }finally{c.cleanup();}
 });
