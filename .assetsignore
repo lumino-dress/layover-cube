@@ -10,3 +10,6 @@ admin-config.json
 worker.js
 wrangler*.jsonc
 제품등록_안내.md
+web-worker.js
+WEB_DEVELOPMENT.md
+tests/**
