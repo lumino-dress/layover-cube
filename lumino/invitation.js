@@ -17,26 +17,28 @@ export function createInvitation(dialog, { openDialog, onFinish, reducedMotion, 
     run++;
     cancelAnimations();
     opening = false;
+    dialog.classList.add('fantasy-invitation');
     dialog.classList.remove('intro-opening', 'intro-still');
-    const sparks = Array.from({ length: 10 }, (_, i) => `<i style="--i:${i};--burst-x:${Math.cos(i * .9) * 140}px;--burst-y:${Math.sin(i * .9) * 150 - 70}px">${i % 2 ? '✦' : '♡'}</i>`).join('');
+    const sparks = Array.from({ length: 6 }, (_, i) => `<i style="--i:${i}">✦</i>`).join('');
     dialog.innerHTML = `
-      <div class="invitation-ambient" aria-hidden="true"><img src="${invitation.scene}" alt=""></div>
+      <div class="invitation-ambient" aria-hidden="true"></div>
       <div class="invitation-theatre">
         <p class="invitation-eyebrow">A LITTLE INVITATION, JUST FOR YOU</p>
         <div class="invitation-stage">
-          <img class="invitation-scene" src="${invitation.scene}" alt="장미와 진주 사이, 새틴 리본과 왕관 인장으로 장식한 핑크 초대장" fetchpriority="high" width="1254" height="1254">
+          <svg class="invitation-flight" viewBox="0 0 1000 1000" aria-hidden="true"><path d="M110 560C-10 260 370 175 638 220S1030 490 855 650"/><g transform="translate(634 212) rotate(18)"><path class="flight-plane" d="M-18 0L18 -10L6 3L5 17L-1 6L-13 10L-8 2Z"/></g><path class="flight-star" d="M185 230V254M173 242H197M811 340V360M801 350H821"/></svg>
+          <img class="invitation-scene" src="${invitation.scene}" alt="파스텔 블루 안감과 샴페인 골드 장식의 파우더 핑크 여행 초대장" fetchpriority="high" width="1000" height="1000">
           <div class="invitation-flap" aria-hidden="true">
-            <div class="flap-face flap-front"><img src="${invitation.flap}" alt="" width="1200" height="429"><div class="invitation-cover-logo">${icon('crown')}<span>LUMINO</span></div></div>
-            <div class="flap-face flap-back"><img src="${invitation.flap}" alt="" width="1200" height="429"></div>
+            <div class="flap-face flap-front"><img src="${invitation.flap}" alt="" width="680" height="230"><div class="invitation-cover-logo">${icon('crown')}<span>LUMINO</span></div></div>
+            <div class="flap-face flap-back"><img src="${invitation.lining}" alt="" width="680" height="230"></div>
           </div>
           <div class="invitation-letter" aria-hidden="true">
-            <img class="invitation-paper" src="${invitation.paper}" alt="" width="900" height="900">
-            <div class="invitation-letter-copy">${icon('crown')}<p>YOU ARE INVITED TO</p><h2>LUMINO</h2><span class="invitation-rule" aria-hidden="true">✦</span><p class="script">A Sparkling Little Journey,<br>A Cozy and Lovely World.</p><p class="invitation-welcome">당신의 반짝이는 여행에<br>초대합니다.</p></div>
+            <img class="invitation-paper" src="${invitation.paper}" alt="" width="520" height="540">
+            <div class="invitation-letter-copy">${icon('castle')}<p>YOU ARE INVITED TO</p><h2>LUMINO</h2><span class="invitation-rule" aria-hidden="true">✦</span><p class="script">A Sparkling Little Journey</p><p class="invitation-subtitle">A Cozy and Lovely World.</p></div>
           </div>
-          <img class="invitation-pocket" src="${invitation.scene}" alt="" aria-hidden="true" width="1254" height="1254">
+          <img class="invitation-pocket" src="${invitation.pocket}" alt="" aria-hidden="true" width="1000" height="1000">
           <div class="invitation-address"><p>YOU ARE INVITED TO</p><h2>LUMINO</h2></div>
-          <div class="invitation-ribbon" aria-hidden="true"><img src="${invitation.ribbon}" alt="" width="1254" height="836"></div>
-          <button type="button" class="invitation-ribbon-hit" data-action="open-intro" aria-label="리본 초대장 열기"><span class="ribbon-glint" aria-hidden="true">✦</span></button>
+          <div class="invitation-ribbon" aria-hidden="true"><img src="${invitation.ribbon}" alt="" width="140" height="130"></div>
+          <button type="button" class="invitation-ribbon-hit" data-action="open-intro" aria-label="여행 초대장 열기"><span class="ribbon-glint" aria-hidden="true">✦</span></button>
           <button type="button" class="l-btn invitation-open-button" data-action="open-intro" autofocus>OPEN YOUR INVITATION <span aria-hidden="true">›</span></button>
           <div class="invitation-sparks" aria-hidden="true">${sparks}</div>
         </div>
@@ -45,7 +47,7 @@ export function createInvitation(dialog, { openDialog, onFinish, reducedMotion, 
       <p class="sr-only" role="status" id="invitation-status"></p>
       <button type="button" class="skip-intro" data-action="skip-intro">SKIP INTRO <span aria-hidden="true">→</span></button>`;
     // 클릭 전부터 부품을 디코딩합니다. 모션 중 네트워크 요청/이미지 교체가 없습니다.
-    ready = Promise.allSettled([...dialog.querySelectorAll('img')].map(img => img.decode()));
+    ready = Promise.allSettled([...dialog.querySelectorAll('img')].map(img => typeof img.decode === 'function' ? img.decode() : Promise.resolve()));
     openDialog('intro-dialog');
   }
 

@@ -1,8 +1,10 @@
-// 한 장면의 부품입니다. 재생 중 사진을 교체하지 않으며 문구는 HTML입니다.
+// 새 초대장 전용 벡터 자산입니다. 기존 여권·완료 화면의 이미지는 유지합니다.
 export const invitation = {
-  scene: 'images/lumino-invitation-scene-v2.webp',
-  flap: 'images/lumino-invitation-flap-v2.webp',
-  ribbon: 'images/lumino-invitation-ribbon-v2.webp',
-  paper: 'images/lumino-invitation-paper-v2.webp',
+  scene: 'images/invitation-fantasy/frame.svg',
+  pocket: 'images/invitation-fantasy/pocket.svg',
+  flap: 'images/invitation-fantasy/flap.svg',
+  lining: 'images/invitation-fantasy/lining.svg',
+  ribbon: 'images/invitation-fantasy/seal.svg',
+  paper: 'images/invitation-fantasy/card.svg',
   duration: 5200
 };

@@ -468,3 +468,74 @@ button.memory-photo:hover,a.memory-photo:hover{translate:0 -5px}
  .memory-record>.quiet-link{font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){.result-keepsake,.memory-photo{transition:none}}
+
+/* Pink Fantasy Travel Invitation — 새 초대장 내부에만 적용합니다. */
+.l-dialog.intro-dialog.fantasy-invitation {
+  --invite-cream: #fffaf2;
+  --invite-pink: #f6e1e9;
+  --invite-blue: #d8e7f0;
+  --invite-gold: #b59b69;
+  --invite-ink: #76505d;
+  background: linear-gradient(145deg, var(--invite-cream), #fdf2f4 52%, var(--invite-pink));
+}
+.fantasy-invitation .invitation-ambient {
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 20%, #fffdf8 0%, transparent 55%), radial-gradient(ellipse at 85% 75%, #e4edf4 0%, transparent 55%);
+}
+.fantasy-invitation .invitation-ambient::after { background: none; }
+.fantasy-invitation .invitation-stage {
+  width: min(96vw, calc(100dvh - 160px), 780px);
+  mask-image: none;
+  animation: fantasy-arrive .7s cubic-bezier(.22,.61,.36,1) both;
+}
+.fantasy-invitation .invitation-scene { filter: drop-shadow(0 12px 22px #9d728423); }
+.fantasy-invitation .invitation-pocket { clip-path: none; }
+.fantasy-invitation .invitation-flap { left: 16%; top: 44%; width: 68%; height: 23%; }
+.fantasy-invitation .flap-face > img { top: 0; height: 100%; object-fit: contain; }
+.fantasy-invitation .invitation-cover-logo { top: 10%; color: var(--invite-ink); text-shadow: none; }
+.fantasy-invitation .invitation-cover-logo .icon { fill: none; stroke: var(--invite-gold); }
+.fantasy-invitation .invitation-cover-logo span { font-size: 4cqw; letter-spacing: .1em; }
+.fantasy-invitation .invitation-letter { left: 24%; top: 46%; width: 52%; height: 54%; background: none; box-shadow: 0 1cqw 2.5cqw #a08c7220; }
+.fantasy-invitation .invitation-paper { object-fit: contain; }
+.fantasy-invitation .invitation-letter-copy { inset: 10% 6%; color: var(--invite-ink); gap: 1.6cqw; }
+.fantasy-invitation .invitation-letter-copy > .icon { width: 6cqw; height: 6cqw; fill: none; stroke: var(--invite-gold); margin: 0; }
+.fantasy-invitation .invitation-letter-copy > p:not(.script) { font-size: 1.3cqw; letter-spacing: .13em; }
+.fantasy-invitation .invitation-letter-copy h2 { font: 500 8.8cqw/1 var(--font-serif); letter-spacing: .035em; margin: 0; color: var(--invite-ink); }
+.fantasy-invitation .invitation-rule { color: var(--invite-gold); margin: 0; }
+.fantasy-invitation .invitation-rule::before,
+.fantasy-invitation .invitation-rule::after { background: #d6c49e; }
+.fantasy-invitation .invitation-letter-copy .script { font-size: 3.3cqw; color: var(--invite-ink); transform: none; margin: 0; line-height: 1.3; }
+.fantasy-invitation .invitation-letter-copy .invitation-subtitle { font-size: 1.65cqw; letter-spacing: .025em; }
+.fantasy-invitation .invitation-ribbon { left: 43%; top: 57%; width: 14%; height: 13%; aspect-ratio: auto; }
+.fantasy-invitation .invitation-ribbon img { object-fit: contain; }
+.fantasy-invitation .invitation-address { top: 71%; left: 25%; width: 50%; color: var(--invite-ink); }
+.fantasy-invitation .invitation-address h2 { font-size: 3.7cqw; letter-spacing: .15em; }
+.fantasy-invitation .invitation-address p { font-size: 1.1cqw; }
+.lumino-site .fantasy-invitation .invitation-open-button { top: 86%; left: 17%; width: 66%; min-height: 44px; color: var(--invite-ink); background: var(--invite-cream); border: 1px solid #cdb78e; box-shadow: 0 5px 16px #a0817d12; font-size: max(10px, 1.5cqw); letter-spacing: .08em; }
+.lumino-site .fantasy-invitation .invitation-open-button:hover { background: #f9eaf0; }
+.lumino-site .fantasy-invitation .invitation-ribbon-hit { left: 40%; top: 55%; width: 20%; height: 16%; }
+.fantasy-invitation .invitation-eyebrow { color: var(--invite-ink); background: transparent; border: 0; letter-spacing: .18em; }
+.fantasy-invitation .invitation-caption { color: var(--invite-ink); background: transparent; }
+.fantasy-invitation .skip-intro { color: var(--invite-ink); background: var(--invite-cream); border-color: #d8c6a2; box-shadow: none; }
+.fantasy-invitation .invitation-flight { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; fill: none; stroke: var(--invite-gold); stroke-width: 1.5; opacity: .6; pointer-events: none; }
+.fantasy-invitation .invitation-flight > path:first-child { stroke-dasharray: 3 9; }
+.fantasy-invitation .flight-plane { fill: var(--invite-gold); stroke-width: 1; }
+.fantasy-invitation .flight-star { stroke: var(--invite-gold); }
+.fantasy-invitation .invitation-sparks i { left: calc(12% + var(--i)*14%); top: calc(24% + var(--i)*3%); color: var(--invite-gold); text-shadow: none; font-size: clamp(9px, 1.8cqw, 16px); animation: fantasy-twinkle 3.8s calc(var(--i)*-.7s) ease-in-out infinite; opacity: .25; }
+.fantasy-invitation.intro-opening .invitation-sparks i { animation-name: fantasy-twinkle; }
+.fantasy-invitation.intro-still .invitation-letter { transform: translateY(-38cqw); }
+.fantasy-invitation.intro-still .invitation-letter-copy h2 { opacity: 1; }
+@keyframes fantasy-arrive { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes fantasy-twinkle { 0%,100% { opacity: .15; } 50% { opacity: .55; } }
+@media (min-width: 720px) { .fantasy-invitation .invitation-stage { width: min(92vw, 82dvh, 780px); } }
+@media (max-height: 500px) and (orientation: landscape) { .fantasy-invitation .invitation-stage { width: 94dvh; } }
+@media (prefers-reduced-motion: reduce) { .fantasy-invitation .invitation-stage, .fantasy-invitation .invitation-sparks i { animation: none; } }
+.low-effects .fantasy-invitation .invitation-stage, .low-effects .fantasy-invitation .invitation-sparks i { animation: none; }
+
+/* 카드 하단은 봉투 안에 머물다가 상승과 함께 드러납니다. */
+.fantasy-invitation .invitation-letter { clip-path: inset(0 0 34% 0); }
+.fantasy-invitation.intro-still .invitation-letter { clip-path: none; }
+.lumino-site .fantasy-invitation .invitation-open-button { color: var(--invite-ink) !important; }
+.fantasy-invitation .invitation-open-button:focus-visible { outline: 2px solid var(--invite-gold); outline-offset: 4px; }
+.fantasy-invitation .invitation-letter-copy > p:not(.script) { font-size: max(8px, 1.3cqw); }
+.fantasy-invitation .invitation-letter-copy > p.invitation-subtitle { font-size: max(9px, 1.65cqw); letter-spacing: .025em; }
