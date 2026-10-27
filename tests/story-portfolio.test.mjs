@@ -9,11 +9,12 @@ try {
  parseHTML = html => { const { window } = new JSDOM(html); return { window, document: window.document }; };
 } catch {}
 const html = await readFile(new URL('../about.html', import.meta.url), 'utf8');
-test('기존 소개·리본 보존, 컬러 소개와 다음 여행 사이에 연결', () => {
- assert.ok(html.indexOf('color-closet') < html.indexOf('id="story-portfolio-content"'));
- assert.ok(html.indexOf('id="story-portfolio-content"') < html.indexOf('chapter-next'));
- assert.match(html, /id="story-end"/);
- assert.match(html, /data-action="ribbon"/);
+test('포트폴리오 → YOUR JOURNEY 구성, 기존 소개·리본·미션 제거', () => {
+ assert.ok(html.indexOf('id="story-portfolio-content"') < html.indexOf('id="story-journey-link"'));
+ assert.match(html, /id="story-journey-link"[^>]*href="journey.html"/);
+ assert.match(html, /data-shared-header/);
+ assert.match(html, /data-shared-footer/);
+ for (const removed of ['color-closet', 'story-end', 'data-action="ribbon"', 'story-copy', 'story-photo', 'philosophy', 'audience-section', 'data-mission']) assert.ok(!html.includes(removed));
 });
 const catalogSource = await readFile(new URL('../catalog.js', import.meta.url), 'utf8');
 function setup() {

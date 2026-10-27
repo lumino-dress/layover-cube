@@ -14,6 +14,7 @@ import { loadProductLooks } from './shop.js';
 import { renderTravelCard, downloadBlob } from './card.js';
 import { journalMarkup, journalSummaryMarkup, tasteResultMarkup, tastePreviewMarkup } from './journal.js';
 import { renderWorld } from './world.js';
+import { bindStoryJourney } from './story-journey.js';
 
 const $ = (selector, root=document) => root.querySelector(selector);
 const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
@@ -27,6 +28,7 @@ let storageFailed=false;
 let storage;
 try { storage=window.localStorage; } catch { storage={getItem:()=>null,setItem:()=>{throw new Error('unavailable');}};storageFailed=true; }
 const store=createStore(storage,()=>{ storageFailed=true; });
+bindStoryJourney({ root: document.getElementById('story-portfolio-content'), end: document.getElementById('story-portfolio-end'), link: document.getElementById('story-journey-link'), store });
 let toastTimer, completionTimer, activeDetail=null, galleryFilter='ALL', tasteStep=0, cardBlob=null, cardRendering=false, cardGeneration=0;
 let selectedStamp=null, focusReturn=null, passportViewKey='';
 const awardQueue=[];
@@ -242,7 +244,6 @@ document.addEventListener('click',event=>{
   else if(action==='filter'){galleryFilter=button.dataset.category;renderGallery();$(`[data-category="${galleryFilter}"]`)?.focus({preventScroll:true});}
   else if(action==='taste-back'){tasteStep=Math.max(0,tasteStep-1);renderTaste();$('#taste-form input')?.focus({preventScroll:true});}
   else if(action==='taste-edit'){tasteStep=0;renderTaste();$('#journey').scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'start'});$('#taste-form input')?.focus({preventScroll:true});}
-  else if(action==='ribbon'){const r=$('#story-end')?.getBoundingClientRect();if(!store.get().storyRead&&r&&r.top<innerHeight&&r.bottom>0)store.update({storyRead:true});if(!store.get().storyRead){toast('브랜드 편지를 읽고 마지막 리본을 풀어주세요.');return;}const found=store.get().ribbonFound;store.update({ribbonFound:true});if(found)toast('이미 발견한 사랑스러운 비밀이에요!');}
   else if(action==='stamp-guide'){selectedStamp=id;renderPassport();const row=$('#mission-'+id);row?.scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'nearest'});$('button',row)?.focus({preventScroll:true});}
   else if(action==='mission'){const stamp=stamps.find(item=>item.id===id);if(stamp)goMission(stamp);}
   else if(action==='passport-section'){
@@ -280,8 +281,7 @@ renderCollection();renderGallery();renderStory();renderProgress();renderTaste();
 if('IntersectionObserver' in window){
   const reveal=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');reveal.unobserve(entry.target);}}),{threshold:.08});
   $$('.reveal').forEach(el=>{if(!reducedMotion.matches&&!lowPower)el.classList.add('observed');reveal.observe(el);});
-  const storyEnd=$('#story-end');if(storyEnd){const read=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)&&!$('#intro-dialog').open){store.update({storyRead:true});read.disconnect();}},{threshold:.5});read.observe(storyEnd);}
 
-}else {$$('.reveal').forEach(el=>el.classList.add('is-visible'));const end=$('#story-end');if(end)window.addEventListener('scroll',()=>{const r=end.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0)store.update({storyRead:true});},{passive:true});}
+}else {$$('.reveal').forEach(el=>el.classList.add('is-visible'));}
 if(isHome&&!reducedMotion.matches&&!lowPower&&matchMedia('(min-width: 1024px) and (pointer: fine)').matches){let pending=false;window.addEventListener('scroll',()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{const y=Math.min(scrollY,800)*.045;$('.dream-scenery').style.transform=`translateY(${y}px) scale(1.025)`;pending=false;});},{passive:true});}
 if(isHome&&!store.get().started)showIntro();else maybeComplete();

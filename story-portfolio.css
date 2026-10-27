@@ -1,4 +1,4 @@
-/* 기존 브랜드 소개와 다른 페이지에 영향을 주지 않는 OUR STORY 전용 영역입니다. */
+/* OUR STORY 전용: 원본 비율을 유지하고 콘텐츠 주변 여백을 줄입니다. */
 .story-portfolio { min-width: 0; }
 .story-portfolio .portfolio-content { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .story-portfolio .portfolio-content img {
@@ -19,3 +19,7 @@
 .story-portfolio .portfolio-content iframe,
 .story-portfolio .portfolio-content video { max-width: 100%; }
 .story-portfolio .portfolio-content table { display: block; max-width: 100%; overflow-x: auto; }
+
+.story-portfolio-page .story-portfolio { padding-block: 18px 0; margin-block: 0; }
+.story-portfolio-page .chapter-next { margin-block: 0; padding-block: 24px 36px; text-align: center; }
+.story-portfolio-end { display: block; height: 1px; }

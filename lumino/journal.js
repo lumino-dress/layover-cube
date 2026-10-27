@@ -49,8 +49,8 @@ export function journalMarkup(state) {
       media = `<button type="button" class="memory-photo" data-action="replay-intro" aria-label="나의 첫 초대장 다시 보기">${memoryImage({ image:journeyArt.previews.travel, title:'여행을 시작한 루미노 초대장' }, entry.caption)}</button>`;
       title = '나에게 도착한 초대장'; detail = 'LUMINO와 함께 시작한 작은 여행'; action = '초대장 다시 보기';
     } else if (entry.id === 'cute' && earned) {
-      media = `<button type="button" class="memory-photo memory-letter" data-action="chapter" data-chapter="story" aria-label="간직한 브랜드 편지 다시 읽기"><span class="memory-letter-content">${icon('crown')}<span class="script">Dear, lovely you.</span><span>${entry.letter.map(esc).join('<br>')}</span>${icon('bow')}<small>OUR STORY · LUMINO</small></span><span class="memory-handwriting script">${entry.caption}</span></button>`;
-      title = '리본 속에 담긴 작은 마음'; detail = '브랜드 편지를 읽고 발견한 사랑스러운 비밀'; action = '편지 다시 읽기';
+      media = `<button type="button" class="memory-photo memory-letter" data-action="chapter" data-chapter="story" aria-label="루미노 포트폴리오 다시 보기"><span class="memory-letter-content">${icon('crown')}<span class="script">Dear, lovely you.</span><span>${entry.letter.map(esc).join('<br>')}</span>${icon('bow')}<small>OUR STORY · LUMINO</small></span><span class="memory-handwriting script">${entry.caption}</span></button>`;
+      title = '함께한 루미노의 이야기'; detail = '포트폴리오를 끝까지 확인하고 이어간 여행'; action = '포트폴리오 다시 보기';
     } else {
       media = `<div class="memory-photo memory-empty"><span class="memory-empty-content">${icon(stamp.icon)}<strong>${entry.empty}</strong><small>${entry.hint}</small></span><span class="memory-handwriting script">Waiting for your memory.</span></div>`;
     }

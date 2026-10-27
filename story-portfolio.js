@@ -54,25 +54,37 @@ export function prepareStoryPortfolio(body, document, catalog) {
 }
 
 export async function loadStoryPortfolio(root, { fetcher = fetch, document = globalThis.document, catalog = globalThis.ProductCatalog } = {}) {
+  const status = value => {
+    root.dataset.portfolioStatus = value;
+    const Event = document.defaultView.CustomEvent;
+    root.dispatchEvent(new Event('story-portfolio-state'));
+  };
   root.setAttribute('aria-busy', 'true');
+  status('loading');
   try {
     const response = await fetcher('portfolio.json', { cache: 'no-store' });
     if (!response.ok) throw new Error('portfolio unavailable');
     const data = await response.json();
     if (typeof data?.body !== 'string' || !catalog) throw new Error('invalid portfolio');
     const html = prepareStoryPortfolio(data.body, document, catalog);
-    if (!html) {
+    const content = document.createElement('div');
+    content.innerHTML = html;
+    if (!content.textContent.trim() && !content.querySelector('img,video,iframe')) {
       root.innerHTML = '<p class="portfolio-status">등록된 포트폴리오 내용이 없습니다.</p>';
+      status('empty');
     } else {
       root.innerHTML = html;
+      status('ready');
       root.querySelectorAll('img').forEach(image => image.addEventListener('error', () => {
         const message = document.createElement('span');
         message.className = 'portfolio-status';
         message.textContent = '이미지를 불러오지 못했습니다.';
         image.replaceWith(message);
+        status('error');
       }, { once: true }));
     }
   } catch (_) {
+    status('error');
     root.innerHTML = '<p class="portfolio-status">포트폴리오를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>';
     const retry = document.createElement('button');
     retry.type = 'button';

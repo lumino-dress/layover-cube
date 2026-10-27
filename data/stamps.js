@@ -24,10 +24,10 @@ export const stamps = [
   },
   {
     id: 'cute', name: 'CUTE', icon: 'bow', chapter: 'story', color: 'rose',
-    title: '리본 속 작은 비밀', location: 'OUR STORY · 브랜드 편지', target: '#story', actionLabel: '브랜드 편지 읽기',
-    steps: ['루미노가 보낸 브랜드 편지를 읽어보세요.', '편지 맨 아래의 핑크 리본을 눌러 풀어주세요.'],
-    condition: '브랜드 편지를 읽고 마지막 리본 누르기',
-    message: '사랑스러운 비밀을 발견했어요! CUTE 스탬프를 찍었어요.'
+    title: '루미노의 이야기', location: 'OUR STORY · 포트폴리오', target: '#story', actionLabel: '포트폴리오 보러 가기',
+    steps: ['포트폴리오를 불러온 뒤 마지막 부분까지 스크롤해 확인하세요.', '아래 YOUR JOURNEY 버튼을 누르면 스탬프를 받고 이동해요.'],
+    condition: '포트폴리오 끝까지 확인 후 YOUR JOURNEY 누르기',
+    message: '루미노의 이야기를 함께했어요! CUTE 스탬프를 찍었어요.'
   },
   {
     id: 'luxury', name: 'LUXURY', icon: 'diamond', chapter: 'journey', color: 'gold',
